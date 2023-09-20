@@ -1,97 +1,97 @@
-/*=============================================
- ¡á¡á¡á ¿¹¿Ü Ã³¸®(Excepiton Handling) ¡á¡á¡á
+/*============================================
+ â– â– â–  ì˜ˆì™¸ ì²˜ë¦¬(Excepiton Handling) â– â– â– 
  ============================================*/
 
 /*
-¡Û ÇÁ·Î±×·¥¿¡¼­ ¹ß»ýÇÏ´Â ¿À·ù(Error)´Â
+â—‹ í”„ë¡œê·¸ëž¨ì—ì„œ ë°œìƒí•˜ëŠ” ì˜¤ë¥˜(Error)ëŠ”
 
-	1. Àß¸øµÈ ¹®¹ýÀ» »ç¿ëÇÏ°Å³ª º¯¼ö µîÀ» Á¤ÀÇÇÏÁö ¾ÊÀº »óÅÂ¿¡¼­
-	»ç¿ëÇÔÀ¸·Î½á ÄÄÆÄÀÏ ´Ü°è¿¡¼­ ¹ß»ýÇÏ´Â ¹®¹ýÀûÀÎ ¿À·ù(Error)¿Í
+	1. ìž˜ëª»ëœ ë¬¸ë²•ì„ ì‚¬ìš©í•˜ê±°ë‚˜ ë³€ìˆ˜ ë“±ì„ ì •ì˜í•˜ì§€ ì•Šì€ ìƒíƒœì—ì„œ
+	ì‚¬ìš©í•¨ìœ¼ë¡œì¨ ì»´íŒŒì¼ ë‹¨ê³„ì—ì„œ ë°œìƒí•˜ëŠ” ë¬¸ë²•ì ì¸ ì˜¤ë¥˜(Error)ì™€
 
-	2. ÇÁ·Î±×·¥À» ½ÇÇàÇÏ´Â °úÁ¤¿¡¼­ ¹ß»ýÇÏ´Â ·±Å¸ÀÓ ¿À·ù(Error)·Î
-	³ª´­ ¼ö ÀÖ´Ù.
+	2. í”„ë¡œê·¸ëž¨ì„ ì‹¤í–‰í•˜ëŠ” ê³¼ì •ì—ì„œ ë°œìƒí•˜ëŠ” ëŸ°íƒ€ìž„ ì˜¤ë¥˜(Error)ë¡œ
+	ë‚˜ëˆŒ ìˆ˜ ìžˆë‹¤.
 
-	- °³¹ßÀÚ°¡ ¹®Á¦ ºÐ¼®À» Àß¸øÇÏ°Å³ª ½Ç¼ö¿¡ ÀÇÇØ
-	  ¾û¶×ÇÑ °á°ú¸¦ °¡Á®¿À°Ô µÇ´Â ³í¸®ÀûÀÎ ¿À·ù(Error)¿Í
+	- ê°œë°œìžê°€ ë¬¸ì œ ë¶„ì„ì„ ìž˜ëª»í•˜ê±°ë‚˜ ì‹¤ìˆ˜ì— ì˜í•´
+	  ì—‰ëš±í•œ ê²°ê³¼ë¥¼ ê°€ì ¸ì˜¤ê²Œ ë˜ëŠ” ë…¼ë¦¬ì ì¸ ì˜¤ë¥˜(Error)ì™€
 
-	- ½Ã½ºÅÛ ÀÌ»ó¿¡¼­ ¹ß»ýµÇ´Â ½Ã½ºÅÛ ¿À·ù(Error), ±×¸®°í
+	- ì‹œìŠ¤í…œ ì´ìƒì—ì„œ ë°œìƒë˜ëŠ” ì‹œìŠ¤í…œ ì˜¤ë¥˜(Error), ê·¸ë¦¬ê³ 
 	
-	- ÇÁ·Î±×·¥ ½ÇÇà Áß ¹ß»ýµÇ´Â ºñ Á¤»óÀûÀÎ »óÈ²À» ÀÇ¹ÌÇÏ´Â
-	  ¿¹¿Ü»çÇ×(Exception)ÀÌ ÀÖ´Ù.
+	- í”„ë¡œê·¸ëž¨ ì‹¤í–‰ ì¤‘ ë°œìƒë˜ëŠ” ë¹„ ì •ìƒì ì¸ ìƒí™©ì„ ì˜ë¯¸í•˜ëŠ”
+	  ì˜ˆì™¸ì‚¬í•­(Exception)ì´ ìžˆë‹¤.
 
-	¿¹¸¦ µé¾î,
-	-> ¾î¶² ¼ö¸¦ 0À¸·Î ³ª´©°Å³ª...
-	-> ¹è¿­À» Á¦¾îÇÏ´Â °úÁ¤¿¡¼­ Ã·ÀÚ¸¦ ¹þ¾î³ª´Â »óÈ²ÀÌ ¹ß»ýÇÏ°Å³ª...
-	-> Á¸ÀçÇÏÁö ¾Ê´Â ÆÄÀÏÀ» ¿ÀÇÂÇÏ¿© ÀÐ¾îµéÀÎ´Ù°Å³ª...
+	ì˜ˆë¥¼ ë“¤ì–´,
+	-> ì–´ë–¤ ìˆ˜ë¥¼ 0ìœ¼ë¡œ ë‚˜ëˆ„ê±°ë‚˜...
+	-> ë°°ì—´ì„ ì œì–´í•˜ëŠ” ê³¼ì •ì—ì„œ ì²¨ìžë¥¼ ë²—ì–´ë‚˜ëŠ” ìƒí™©ì´ ë°œìƒí•˜ê±°ë‚˜...
+	-> ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” íŒŒì¼ì„ ì˜¤í”ˆí•˜ì—¬ ì½ì–´ë“¤ì¸ë‹¤ê±°ë‚˜...
 
-  ==> °³¹ßÀÚ°¡ ÀÌ·± ¿¹¿Ü »çÇ×ÀÌ ¹ß»ýÇÒ °æ¿ì¸¦ ¹Ì¸® ¿¹ÃøÇÏ¿©
-	  ÀûÀýÈ÷ ´ëÀÀÇÏ±â À§ÇÑ ÀýÂ÷¸¦ ±¸ÇöÇÏµµ·Ï ¹®¹ýÀ» Á¤¸®ÇØ ³õÀº °Í.
-	  ¿¹. ¿Ü. Ã³. ¸®
+  ==> ê°œë°œìžê°€ ì´ëŸ° ì˜ˆì™¸ ì‚¬í•­ì´ ë°œìƒí•  ê²½ìš°ë¥¼ ë¯¸ë¦¬ ì˜ˆì¸¡í•˜ì—¬
+	  ì ì ˆížˆ ëŒ€ì‘í•˜ê¸° ìœ„í•œ ì ˆì°¨ë¥¼ êµ¬í˜„í•˜ë„ë¡ ë¬¸ë²•ì„ ì •ë¦¬í•´ ë†“ì€ ê²ƒ.
+	  ì˜ˆ. ì™¸. ì²˜. ë¦¬
 
-¡Ø Á¤¸®ÇØ ³õÀº ¹®¹ý~!!!(-> Exception Å¬·¡½º)
-	- ¿¹¿Ü´Â ÇÁ·Î±×·¥ ½ÇÇà Áß¿¡ ¹ß»ýÇÒ ¼ö ÀÖ´Â
-	  ¸í·É¾îÀÇ Á¤»óÀûÀÎ Èå¸§À» ¹æÇØÇÏ´Â ÀÌº¥Æ®·Î
-	  ÀÚ¹Ù¿¡¼­ ¿¹¿Ü´Â ÇÏ³ªÀÇ ¿ÀºêÁ§Æ®(Object, °´Ã¼)ÀÌ´Ù.
+â€» ì •ë¦¬í•´ ë†“ì€ ë¬¸ë²•~!!!(-> Exception í´ëž˜ìŠ¤)
+	- ì˜ˆì™¸ëŠ” í”„ë¡œê·¸ëž¨ ì‹¤í–‰ ì¤‘ì— ë°œìƒí•  ìˆ˜ ìžˆëŠ”
+	  ëª…ë ¹ì–´ì˜ ì •ìƒì ì¸ íë¦„ì„ ë°©í•´í•˜ëŠ” ì´ë²¤íŠ¸ë¡œ
+	  ìžë°”ì—ì„œ ì˜ˆì™¸ëŠ” í•˜ë‚˜ì˜ ì˜¤ë¸Œì íŠ¸(Object, ê°ì²´)ì´ë‹¤.
 
-	- ÇÁ·Î±×·¥ ½ÇÇà Áß¿¡ ¸Þ¼Òµå ¾È¿¡¼­ ¿À·ù(Error)°¡ ¹ß»ýÇÏ°Ô µÉ °æ¿ì,
-	  ¸Þ¼Òµå´Â ±× ¿À·ù¿¡ ÇØ´çÇÏ´Â ¿¹¿Ü ¿ÀºêÁ§Æ®¸¦ ¸¸µé°í
-	  ±×°ÍÀ» ÀÚ¹Ù ·±Å¸ÀÓ ½Ã½ºÅÛ(Runtime System)¿¡ Àü´ÞÇØÁØ´Ù.
+	- í”„ë¡œê·¸ëž¨ ì‹¤í–‰ ì¤‘ì— ë©”ì†Œë“œ ì•ˆì—ì„œ ì˜¤ë¥˜(Error)ê°€ ë°œìƒí•˜ê²Œ ë  ê²½ìš°,
+	  ë©”ì†Œë“œëŠ” ê·¸ ì˜¤ë¥˜ì— í•´ë‹¹í•˜ëŠ” ì˜ˆì™¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ë§Œë“¤ê³ 
+	  ê·¸ê²ƒì„ ìžë°” ëŸ°íƒ€ìž„ ì‹œìŠ¤í…œ(Runtime System)ì— ì „ë‹¬í•´ì¤€ë‹¤.
 
-	- ÀÚ¹Ù¿¡¼­ÀÇ ¸ðµç ¿¹¿Ü Å¬·¡½º´Â Throwable Å¬·¡½º³ª
-	  Throwable Å¬·¡½ºÀÇ ÇÏÀ§ Å¬·¡½º¸¦ »ó¼Ó¹Þ¾Æ »ç¿ëÇÑ´Ù.
+	- ìžë°”ì—ì„œì˜ ëª¨ë“  ì˜ˆì™¸ í´ëž˜ìŠ¤ëŠ” Throwable í´ëž˜ìŠ¤ë‚˜
+	  Throwable í´ëž˜ìŠ¤ì˜ í•˜ìœ„ í´ëž˜ìŠ¤ë¥¼ ìƒì†ë°›ì•„ ì‚¬ìš©í•œë‹¤.
 
-	- Throwable Å¬·¡½º´Â ¿¹¿Ü¸¦ ¼³¸íÇÏ´Â ¹®ÀåÀÌ³ª
-	  ¿¹¿Ü°¡ ¹ß»ýÇÒ ¶§ÀÇ ÇÁ·Î±×·¥ »óÅÂ¿¡ °üÇÑ Á¤º¸¸¦ Æ÷ÇÔÇÏ°í ÀÖ´Ù.
+	- Throwable í´ëž˜ìŠ¤ëŠ” ì˜ˆì™¸ë¥¼ ì„¤ëª…í•˜ëŠ” ë¬¸ìž¥ì´ë‚˜
+	  ì˜ˆì™¸ê°€ ë°œìƒí•  ë•Œì˜ í”„ë¡œê·¸ëž¨ ìƒíƒœì— ê´€í•œ ì •ë³´ë¥¼ í¬í•¨í•˜ê³  ìžˆë‹¤.
 
-	- Throwable Å¬·¡½º¿¡¼­ ÆÄ»ýµÈ Å¬·¡½º
+	- Throwable í´ëž˜ìŠ¤ì—ì„œ íŒŒìƒëœ í´ëž˜ìŠ¤
 
-		¡¤ Exception Å¬·¡½º
-		   Excepiton ¿¹¿Ü Å¬·¡½º´Â ÀÏ¹ÝÀûÀ¸·Î ÇÁ·Î±×·¡¸Ó¿¡ ÀÇÇØ
-		   º¹¿øµÉ ¼ö ¾ø´Â ¿¹¿Ü»çÇ×À¸·Î
-		   ¸Þ¼Òµå°¡ ½ÇÇà Áß¿¡ ´øÁö´Â ¿¹¿Ü¸¦ °¡¸®Å²´Ù.
+		Â· Exception í´ëž˜ìŠ¤
+		   Excepiton ì˜ˆì™¸ í´ëž˜ìŠ¤ëŠ” ì¼ë°˜ì ìœ¼ë¡œ í”„ë¡œê·¸ëž˜ë¨¸ì— ì˜í•´
+		   ë³µì›ë  ìˆ˜ ì—†ëŠ” ì˜ˆì™¸ì‚¬í•­ìœ¼ë¡œ
+		   ë©”ì†Œë“œê°€ ì‹¤í–‰ ì¤‘ì— ë˜ì§€ëŠ” ì˜ˆì™¸ë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 
-		¡¤ Error Å¬·¡½º
-		   ½É°¢ÇÑ ¿¹¿ÜÀÇ ÇüÅÂ·Î °³¹ßÀÚ°¡ º¹¿øÇÒ ¼ö ¾ø´Â ÇüÅÂÀÇ ¿¹¿ÜÀÌ´Ù.
+		Â· Error í´ëž˜ìŠ¤
+		   ì‹¬ê°í•œ ì˜ˆì™¸ì˜ í˜•íƒœë¡œ ê°œë°œìžê°€ ë³µì›í•  ìˆ˜ ì—†ëŠ” í˜•íƒœì˜ ì˜ˆì™¸ì´ë‹¤.
 
 
-¡Ø ¿¹¿ÜÀÇ Á¾·ù
+â€» ì˜ˆì™¸ì˜ ì¢…ë¥˜
 
 	- checked exception
-	¸Þ¼Òµå ³»¿¡¼­ ¿¹¿Ü°¡ ¹ß»ýÇÑ °Ü¿ì
-	¸Þ¼Òµå¸¦ Á¤ÀÇÇÒ ¶§ ¡ºthrows¡» ¹®¿¡ ¸Þ¼Òµå ³»¿¡¼­ ¹ß»ýÇÒ ¼ö ÀÖ´Â
-	¿¹¿ÜµéÀ» ¸í½ÃÇØ ÁÖ°Å³ª ¶Ç´Â ±× ¿¹¿Ü¸¦ ¡ºtry~catch¡» ÇØ¼­
-	Ã³¸®ÇØ ÁÖ¾î¾ß¸¸ ÇÏ´Â ¿¹¿ÜÀÌ´Ù.
-	ÄÄÆÄÀÏ·¯°¡ ÄÄÆÄÀÏ ÇÏ´Â °úÁ¤¿¡¼­ ¡ºchecked exception¡» ÀÌ
-	¡ºthrows¡» µÇ´Â°¡ÀÇ ¿©ºÎ È¤Àº ¡ºtry~catch¡» µÇ´ÂÁöÀÇ ¿©ºÎ¸¦ ÆÇ´ÜÇÏ¿©
-	ÇÁ·Î±×·¥¿¡¼­ ¿¹¿Ü¸¦ ¾î¶² ¹æ½ÄÀ¸·Îµç Ã³¸®ÇÏÁö ¾ÊÀ¸¸é
-	ÄÄÆÄÀÏ ÀÚÃ¼°¡ ºÒ°¡´ÉÇÏ´Ù.
+	ë©”ì†Œë“œ ë‚´ì—ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•œ ê²¨ìš°
+	ë©”ì†Œë“œë¥¼ ì •ì˜í•  ë•Œ ã€Žthrowsã€ ë¬¸ì— ë©”ì†Œë“œ ë‚´ì—ì„œ ë°œìƒí•  ìˆ˜ ìžˆëŠ”
+	ì˜ˆì™¸ë“¤ì„ ëª…ì‹œí•´ ì£¼ê±°ë‚˜ ë˜ëŠ” ê·¸ ì˜ˆì™¸ë¥¼ ã€Žtry~catchã€ í•´ì„œ
+	ì²˜ë¦¬í•´ ì£¼ì–´ì•¼ë§Œ í•˜ëŠ” ì˜ˆì™¸ì´ë‹¤.
+	ì»´íŒŒì¼ëŸ¬ê°€ ì»´íŒŒì¼ í•˜ëŠ” ê³¼ì •ì—ì„œ ã€Žchecked exceptionã€ ì´
+	ã€Žthrowsã€ ë˜ëŠ”ê°€ì˜ ì—¬ë¶€ í˜¹ì€ ã€Žtry~catchã€ ë˜ëŠ”ì§€ì˜ ì—¬ë¶€ë¥¼ íŒë‹¨í•˜ì—¬
+	í”„ë¡œê·¸ëž¨ì—ì„œ ì˜ˆì™¸ë¥¼ ì–´ë–¤ ë°©ì‹ìœ¼ë¡œë“  ì²˜ë¦¬í•˜ì§€ ì•Šìœ¼ë©´
+	ì»´íŒŒì¼ ìžì²´ê°€ ë¶ˆê°€ëŠ¥í•˜ë‹¤.
 
 	- unchecked exception
-	»çÀü¿¡ Ã³¸®ÇÏÁö ¾Ê¾Æµµ ÄÄÆÄÀÏ·¯°¡ Ã¼Å©ÇÏÁö ¾Ê´Â
-	·±Å¸ÀÓ ½Ã¿¡ ¹ß»ýÇÒ ¼ö ÀÖ´Â ¿¹¿ÜÀÌ´Ù.
+	ì‚¬ì „ì— ì²˜ë¦¬í•˜ì§€ ì•Šì•„ë„ ì»´íŒŒì¼ëŸ¬ê°€ ì²´í¬í•˜ì§€ ì•ŠëŠ”
+	ëŸ°íƒ€ìž„ ì‹œì— ë°œìƒí•  ìˆ˜ ìžˆëŠ” ì˜ˆì™¸ì´ë‹¤.
 
-¡Û java.lang.Throwable Å¬·¡½ºÀÇ ÁÖ¿ä ¸Þ¼Òµå
+â—‹ java.lang.Throwable í´ëž˜ìŠ¤ì˜ ì£¼ìš” ë©”ì†Œë“œ
 
 	- String toString()
-	  : Throwable °¢°¢¿¡ ´ëÇÑ ¼³¸íÀ» ¹®ÀÚ¿­ ÇüÅÂ·Î ¹ÝÈ¯ÇÑ´Ù.
+	  : Throwable ê°ê°ì— ëŒ€í•œ ì„¤ëª…ì„ ë¬¸ìžì—´ í˜•íƒœë¡œ ë°˜í™˜í•œë‹¤.
 	- void printStackTrace(PrintStream s)
 	- void printStackTrace(PrintWriter w)
-	  : Ç¥ÁØ Ãâ·Â ½ºÆ®¸²¿¡ ½ºÅÃ È£Ãâ ¸ñ·ÏÀ» ¸¶Áö¸· ¸Þ¼Òµå·ÎºÎÅÍ Ãâ·ÂÇÑ´Ù.
+	  : í‘œì¤€ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ì— ìŠ¤íƒ í˜¸ì¶œ ëª©ë¡ì„ ë§ˆì§€ë§‰ ë©”ì†Œë“œë¡œë¶€í„° ì¶œë ¥í•œë‹¤.
 
-¡Û ÁÖ¿ä ·±Å¸ÀÓ ¿¹¿Ü Å¬·¡½º
+â—‹ ì£¼ìš” ëŸ°íƒ€ìž„ ì˜ˆì™¸ í´ëž˜ìŠ¤
 
 	- ArithmeticException
-	  : ¼öÄ¡ °è»ê»óÀÇ ¿À·ù(0À¸·Î ³ª´©±â µî)
+	  : ìˆ˜ì¹˜ ê³„ì‚°ìƒì˜ ì˜¤ë¥˜(0ìœ¼ë¡œ ë‚˜ëˆ„ê¸° ë“±)
 	- ArrayStoreException
-	  : ¹è¿­¿¡ Àß¸øµÈ µ¥ÀÌÅÍ ÇüÀ» ÀúÀåÇÏ·Á ÇßÀ» °æ¿ì ¹ß»ýÇÏ´Â ¿À·ù
+	  : ë°°ì—´ì— ìž˜ëª»ëœ ë°ì´í„° í˜•ì„ ì €ìž¥í•˜ë ¤ í–ˆì„ ê²½ìš° ë°œìƒí•˜ëŠ” ì˜¤ë¥˜
 	- IndexOutOfBoundsException
-	  : ¹è¿­, ¹®ÀÚ¿­, º¤ÅÍ µî¿¡¼­ ÀÎµ¦½º(Ã·ÀÚ) ¹üÀ§°¡ ¹þ¾î³­ °æ¿ì ¹ß»ýÇÏ´Â ¿À·ù
+	  : ë°°ì—´, ë¬¸ìžì—´, ë²¡í„° ë“±ì—ì„œ ì¸ë±ìŠ¤(ì²¨ìž) ë²”ìœ„ê°€ ë²—ì–´ë‚œ ê²½ìš° ë°œìƒí•˜ëŠ” ì˜¤ë¥˜
 	- ClassCastException
-	  : Å¬·¡½º º¯È¯À» Àß¸øÇÑ °æ¿ì ¹ß»ýÇÏ´Â ¿À·ù
+	  : í´ëž˜ìŠ¤ ë³€í™˜ì„ ìž˜ëª»í•œ ê²½ìš° ë°œìƒí•˜ëŠ” ì˜¤ë¥˜
 	- NullPointerException
-	  : ºó °´Ã¼¸¦ ÂüÁ¶ÇÏ´Â °æ¿ì(ÃÊ±âÈ­ µÇÁö ¾ÊÀº º¯¼ö »ç¿ë µî)
+	  : ë¹ˆ ê°ì²´ë¥¼ ì°¸ì¡°í•˜ëŠ” ê²½ìš°(ì´ˆê¸°í™” ë˜ì§€ ì•Šì€ ë³€ìˆ˜ ì‚¬ìš© ë“±)
 	- SecurityException
-	  : ÀÚ¹ÙÀÇ ³»ºÎ º¸¾È »çÇ×À» À§¹ÝÇÏ¿´À» °æ¿ì ¹ß»ýÇÏ´Â ¿À·ù
+	  : ìžë°”ì˜ ë‚´ë¶€ ë³´ì•ˆ ì‚¬í•­ì„ ìœ„ë°˜í•˜ì˜€ì„ ê²½ìš° ë°œìƒí•˜ëŠ” ì˜¤ë¥˜
 */
 
 import java.io.BufferedReader;
@@ -99,86 +99,86 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class Test147
-{										   // ¨ç
+{										   // â‘ 
 	public static void main(String[] args) //throws IOException
 	{
-		// BufferedReader Å¬·¡½º ÀÎ½ºÅÏ½º »ý¼º
+		// BufferedReader í´ëž˜ìŠ¤ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		// ÁÖ¿ä º¯¼ö ¼±¾ð
+		// ì£¼ìš” ë³€ìˆ˜ ì„ ì–¸
 		int a, b, c;
 
 		
-		// ¨è
+		// â‘¡
 		/*
 		try
 		{
-			System.out.print("Ã¹ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ì²« ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			a = Integer.parseInt(br.readLine());
-			System.out.print("µÎ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ë‘ ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			b = Integer.parseInt(br.readLine());
 
 			c = a + b;
 
-			System.out.println("°á°ú : " + c);
+			System.out.println("ê²°ê³¼ : " + c);
 			
 		}
-		catch (IOException e)						// °ýÈ£¾ÈÀÇ »óÈ²ÀÌ ¹ß»ýÇÏ¸é catch ÇØ¶ó. << e¶ó´Â ÀÌ¸§ ºÙÀÓ
+		catch (IOException e)						// ê´„í˜¸ì•ˆì˜ ìƒí™©ì´ ë°œìƒí•˜ë©´ catch í•´ë¼. << eë¼ëŠ” ì´ë¦„ ë¶™ìž„
 		{
 			// IOExcepiton -> checked excepiton
-			//-- ¸Þ¼Òµå¸¦ Á¤ÀÇÇÏ´Â °úÁ¤¿¡¼­ throw ÇÑ ¿¹¿Ü.
-			//   Àâ¾Æ³»°Å³ª ´øÁöÁö ¾ÊÀ» °æ¿ì ÄÄÆÄÀÏ ¿¡·¯ ¹ß»ý.
+			//-- ë©”ì†Œë“œë¥¼ ì •ì˜í•˜ëŠ” ê³¼ì •ì—ì„œ throw í•œ ì˜ˆì™¸.
+			//   ìž¡ì•„ë‚´ê±°ë‚˜ ë˜ì§€ì§€ ì•Šì„ ê²½ìš° ì»´íŒŒì¼ ì—ëŸ¬ ë°œìƒ.
 			System.out.println(e.toString());
-			//-- ¸ðµç ¿¹¿Ü´Â throwable ¶Ç´Â throwable ÇÏÀ§ Å¬·¡½º¸¦ »ó¼Ó¹ÞÀ¸¹Ç·Î .toString()°¡´É
+			//-- ëª¨ë“  ì˜ˆì™¸ëŠ” throwable ë˜ëŠ” throwable í•˜ìœ„ í´ëž˜ìŠ¤ë¥¼ ìƒì†ë°›ìœ¼ë¯€ë¡œ .toString()ê°€ëŠ¥
 		}
 		*/
 
-		// ¨é
+		// â‘¢
 		/*
 		try
 		{
-			System.out.print("Ã¹ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ì²« ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			a = Integer.parseInt(br.readLine());
-			System.out.print("µÎ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ë‘ ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			b = Integer.parseInt(br.readLine());
 
 			c = a + b;
 
-			System.out.println("°á°ú : " + c);
+			System.out.println("ê²°ê³¼ : " + c);
 			
 		}
 		catch (IOException e)
 		{
 			// IOExcepiton -> checked excepiton
-			//-- ¸Þ¼Òµå¸¦ Á¤ÀÇÇÏ´Â °úÁ¤¿¡¼­ throw ÇÑ ¿¹¿Ü.
-			//   Àâ¾Æ³»°Å³ª ´øÁöÁö ¾ÊÀ» °æ¿ì ÄÄÆÄÀÏ ¿¡·¯ ¹ß»ý.
+			//-- ë©”ì†Œë“œë¥¼ ì •ì˜í•˜ëŠ” ê³¼ì •ì—ì„œ throw í•œ ì˜ˆì™¸.
+			//   ìž¡ì•„ë‚´ê±°ë‚˜ ë˜ì§€ì§€ ì•Šì„ ê²½ìš° ì»´íŒŒì¼ ì—ëŸ¬ ë°œìƒ.
 
 			System.out.println(e.toString());
 		}
 		catch(NumberFormatException e)
 		{
 			// NumberFormatException -> unchecked exception
-			//-- ·±Å¸ÀÓ ½Ã ¹ß»ýÇÒ ¼ö ÀÖ´Â ¿¹¿Ü·Î
-			//   ¹Ýµå½Ã ´øÁú ÇÊ¿äµµ Àâ¾Æ³¾ ÇÊ¿äµµ ¾ø´Ù.
-			//   -> º°µµ Ã³¸®°¡ ¾ø´õ¶óµµ.. ÄÄÆÄÀÏ °úÁ¤¿¡¼­ ¹®Á¦»ïÁö ¾ÊÀ½.
-			// abcÀÔ·Â -> checked exceptionÀ» Ã³¸®ÇÑ °æ¿ì¿¡µµ ·±Å¸ÀÓ ¿¡·¯ ¹ß»ýÇÒ ¼ö ÀÖÀ½
+			//-- ëŸ°íƒ€ìž„ ì‹œ ë°œìƒí•  ìˆ˜ ìžˆëŠ” ì˜ˆì™¸ë¡œ
+			//   ë°˜ë“œì‹œ ë˜ì§ˆ í•„ìš”ë„ ìž¡ì•„ë‚¼ í•„ìš”ë„ ì—†ë‹¤.
+			//   -> ë³„ë„ ì²˜ë¦¬ê°€ ì—†ë”ë¼ë„.. ì»´íŒŒì¼ ê³¼ì •ì—ì„œ ë¬¸ì œì‚¼ì§€ ì•ŠìŒ.
+			// abcìž…ë ¥ -> checked exceptionì„ ì²˜ë¦¬í•œ ê²½ìš°ì—ë„ ëŸ°íƒ€ìž„ ì—ëŸ¬ ë°œìƒí•  ìˆ˜ ìžˆìŒ
 			System.out.println(e.toString());
-			System.out.println(">> ¼ýÀÚ ÇüÅÂÀÇ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù~!!!");
+			System.out.println(">> ìˆ«ìž í˜•íƒœì˜ ë°ì´í„°ë¥¼ ìž…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤~!!!");
 		}
 		*/
 		
-		// ¨ê
+		// â‘£
 		/*
 		try
 		{
-			System.out.print("Ã¹ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ì²« ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			a = Integer.parseInt(br.readLine());
-			System.out.print("µÎ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ë‘ ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			b = Integer.parseInt(br.readLine());
 
 			c = a + b;
 
-			System.out.println("°á°ú : " + c);
+			System.out.println("ê²°ê³¼ : " + c);
 			
 		}
 		catch (Exception e)
@@ -194,14 +194,14 @@ public class Test147
 		// etc...
 		try
 		{
-			System.out.print("Ã¹ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ì²« ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			a = Integer.parseInt(br.readLine());
-			System.out.print("µÎ ¹øÂ° Á¤¼ö ÀÔ·Â : ");
+			System.out.print("ë‘ ë²ˆì§¸ ì •ìˆ˜ ìž…ë ¥ : ");
 			b = Integer.parseInt(br.readLine());
 
 			c = a + b;
 
-			System.out.println("°á°ú : " + c);
+			System.out.println("ê²°ê³¼ : " + c);
 			
 		}
 		catch (Exception e)
@@ -214,8 +214,8 @@ public class Test147
 		}
 		finally
 		{
-			// ¿¹¿Ü°¡ ¹ß»ýÇÏ°Å³ª ¹ß»ýÇÏÁö ¾Ê°Å³ª ¾ðÁ¦³ª ½ÇÇàµÇ´Â ¿µ¿ª
-			System.out.println("°í»ý ¸¹À¸¼Ì½À´Ï´Ù~ °¨»çÇÕ´Ï´Ù.");
+			// ì˜ˆì™¸ê°€ ë°œìƒí•˜ê±°ë‚˜ ë°œìƒí•˜ì§€ ì•Šê±°ë‚˜ ì–¸ì œë‚˜ ì‹¤í–‰ë˜ëŠ” ì˜ì—­
+			System.out.println("ê³ ìƒ ë§Žìœ¼ì…¨ìŠµë‹ˆë‹¤~ ê°ì‚¬í•©ë‹ˆë‹¤.");
 		}
 
 	
