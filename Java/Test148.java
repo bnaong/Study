@@ -1,5 +1,5 @@
-/*=============================================
- ¡á¡á¡á ¿¹¿Ü Ã³¸®(Excepiton Handling) ¡á¡á¡á
+/*============================================
+ â– â– â–  ì˜ˆì™¸ ì²˜ë¦¬(Excepiton Handling) â– â– â– 
  ============================================*/
 
 import java.io.BufferedReader;
@@ -17,14 +17,14 @@ public class Test148
 		String str;
 		int n=0;
 
-		System.out.print("ÀÌ¸§ ÀÔ·Â(Á¾·á : Ctrl+z) : ");
+		System.out.print("ì´ë¦„ ì…ë ¥(ì¢…ë£Œ : Ctrl+z) : ");
 		while ((str=br.readLine()) != null)					
 		{
 			data[n++] = str;
-			System.out.print("ÀÌ¸§ ÀÔ·Â(Á¾·á : Ctrl+z) : ");
+			System.out.print("ì´ë¦„ ì…ë ¥(ì¢…ë£Œ : Ctrl+z) : ");
 		}
 
-		System.out.println("ÀÔ·ÂµÈ ³»¿ë .................");
+		System.out.println("ì…ë ¥ëœ ë‚´ìš© .................");
 		for (String s : data)
 		{
 			if (s !=null)
@@ -34,7 +34,7 @@ public class Test148
 		}
 	}
 
-	public static void main(String[] args) throws IOException // readLine¸Ş¼Òµå¿¡ throws IOExceptionÀÌ µé¾îÀÖ¾î¼­ ¿©±â¿¡µµ ½áÁÖ¾î¾ßÇÔ
+	public static void main(String[] args) throws IOException // readLineë©”ì†Œë“œì— throws IOExceptionì´ ë“¤ì–´ìˆì–´ì„œ ì—¬ê¸°ì—ë„ ì¨ì£¼ì–´ì•¼í•¨
 	{
 		Test148 ob = new Test148();
 		ob.proc();		
