@@ -1,17 +1,17 @@
 /*=======================================
- ¡á¡á¡á Å¬·¡½º °í±Þ ¡á¡á¡á
- - »ó¼Ó °ü°è¿¡ ÀÖ´Â Å¬·¡½ºµé °£ÀÇ Ä³½ºÆÃ
-   (¾÷ Ä³½ºÆÃ, ´Ù¿î Ä³½ºÆÃ)
+ â– â– â–  í´ëž˜ìŠ¤ ê³ ê¸‰ â– â– â– 
+ - ìƒì† ê´€ê³„ì— ìžˆëŠ” í´ëž˜ìŠ¤ë“¤ ê°„ì˜ ìºìŠ¤íŒ…
+   (ì—… ìºìŠ¤íŒ…, ë‹¤ìš´ ìºìŠ¤íŒ…)
  ======================================*/
 
-// super class, ºÎ¸ð Å¬·¡½º, »óÀ§ Å¬·¡½º
+// super class, ë¶€ëª¨ í´ëž˜ìŠ¤, ìƒìœ„ í´ëž˜ìŠ¤
 class SuperTest116
 {
 	public int a=10, b=20;
 
 	public void write()
 	{
-		System.out.println("½´ÆÛÅ¬·¡½º write() ¸Þ¼Òµå");
+		System.out.println("ìŠˆí¼í´ëž˜ìŠ¤ write() ë©”ì†Œë“œ");
 	}
 
 	public int hap()
@@ -20,7 +20,7 @@ class SuperTest116
 	}
 }
 
-// sub class, ÀÚ½Ä Å¬·¡½º, ÇÏÀ§ Å¬·¡½º
+// sub class, ìžì‹ í´ëž˜ìŠ¤, í•˜ìœ„ í´ëž˜ìŠ¤
 class SubTest116 extends SuperTest116
 {
 	/*
@@ -28,12 +28,12 @@ class SubTest116 extends SuperTest116
 
 	public void write()
 	{
-		System.out.println("½´ÆÛÅ¬·¡½º write() ¸Þ¼Òµå");
+		System.out.println("ìŠˆí¼í´ëž˜ìŠ¤ write() ë©”ì†Œë“œ");
 	}
 
 	public int hap()
 	{
-		return a + b + c;
+		return a + b;
 	}
 	*/
 
@@ -49,33 +49,33 @@ class SubTest116 extends SuperTest116
 
 	public void print()
 	{
-		System.out.println("¼­ºêÅ¬·¡½º print() ¸Þ¼Òµå...");
+		System.out.println("ì„œë¸Œí´ëž˜ìŠ¤ print() ë©”ì†Œë“œ...");
 	}
 
 }
 
-// main() ¸Þ¼Òµå¸¦ Æ÷ÇÔÇÏ´Â ¿ÜºÎÀÇ ´Ù¸¥ Å¬·¡½º -> Á¦ 3ÀÚÀÇ ÀÔÀå
+// main() ë©”ì†Œë“œë¥¼ í¬í•¨í•˜ëŠ” ì™¸ë¶€ì˜ ë‹¤ë¥¸ í´ëž˜ìŠ¤ -> ì œ 3ìžì˜ ìž…ìž¥
 public class Test116
 {
 	public static void main(String[] args)
 	{
-		// ÇÏÀ§ Å¬·¡½º ±â¹Ý ÀÎ½ºÅÏ½º »ý¼º
+		// í•˜ìœ„ í´ëž˜ìŠ¤ ê¸°ë°˜ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
 		SubTest116 ob1 = new SubTest116();
 
 		System.out.println("ob1.b : " + ob1.b);
 		//--==>> ob1.b : 100
 		
-		// ¡Û ¾÷ Ä³½ºÆÃ
+		// â—‹ ì—… ìºìŠ¤íŒ…
 		SuperTest116 ob2=ob1;
-		//-- ¡ºSuperTest116 ob2 = (SuperTest116)ob1;¡»°ú µ¿ÀÏÇÑ ÄÚµå
+		//-- ã€ŽSuperTest116 ob2 = (SuperTest116)ob1;ã€ê³¼ ë™ì¼í•œ ì½”ë“œ
 		/*
-		ÇÐ»ý ÇýÀÎÀÌ = new ÇÐ»ý();
+		í•™ìƒ í˜œì¸ì´ = new í•™ìƒ();
 
-		Æ÷À¯·ù »ç¶÷ = ÇýÀÎÀÌ;		// ¡ºÆ÷À¯·ù »ç¶÷ = (»ç¶÷)ÇýÀÎÀÌ;¡»¿Í µ¿ÀÏÇÑ ÄÚµå
+		í¬ìœ ë¥˜ ì‚¬ëžŒ = í˜œì¸ì´;		// ã€Ží¬ìœ ë¥˜ ì‚¬ëžŒ = (ì‚¬ëžŒ)í˜œì¸ì´;ã€ì™€ ë™ì¼í•œ ì½”ë“œ
 
-		¡Ø ÇÐ»ýµµ Æ÷À¯·ù~!!!
+		â€» í•™ìƒë„ í¬ìœ ë¥˜~!!!
 
-		class Æ÷À¯·ù        class ÇÐ»ý extends Æ÷À¯·ù
+		class í¬ìœ ë¥˜        class í•™ìƒ extends í¬ìœ ë¥˜
 		{					{
 		}					}
 
@@ -83,51 +83,51 @@ public class Test116
 		System.out.println("ob2.b : " + ob2.b);
 		//System.out.println("ob2.b : " + ((SuperTest116)ob1).b);
 		//--==>> ob2.b : 20
-		//-- ¸Þ¸ð¸® ±×¸²ÆÇ¿¡¼­ º¯¼ö´Â °´Ã¼º°·Î µû·Î ÇÒ´çµÇ±â ¶§¹®¿¡
-		//   º¯¼ö b´Â ob2 ÀÇ º¯¼öÀÌ´Ù.
+		//-- ë©”ëª¨ë¦¬ ê·¸ë¦¼íŒì—ì„œ ë³€ìˆ˜ëŠ” ê°ì²´ë³„ë¡œ ë”°ë¡œ í• ë‹¹ë˜ê¸° ë•Œë¬¸ì—
+		//   ë³€ìˆ˜ bëŠ” ob2 ì˜ ë³€ìˆ˜ì´ë‹¤.
 
-		System.out.println("ÇÕ : " + ob2.hap());
-		//--==>> ÇÕ : 310
-		//-- hap() ¸Þ¼Òµå´Â ¿À¹ö¶óÀÌµù(Overriding) µÇ¾î ÀÖ°í
-		//   ob2 ´Â ob1 À» ¾÷Ä³½ºÆÃÇÑ »óÅÂÀÇ °´Ã¼ÀÌ¹Ç·Î
-		//   ¡ºSuperTest116¡» ÀÇ hap() ¸Þ¼Òµå¸¦ È£ÃâÇÏ´Â °ÍÀÌ ¾Æ´Ï¶ó
-		//   ¡ºSubTest116¡» ¿¡¼­ ÀçÁ¤ÀÇÇÑ hap() ¸Þ¼Òµå¸¦ È£ÃâÇÏ°Ô µÈ´Ù.
-		//    Áï, ¸Þ¼Òµå´Â
-		//    ¾÷ Ä³½ºÆÃÀÌ µÇ´õ¶óµµ
-		//    ÀçÁ¤ÀÇ(µ¤¾î¾²±â)ÇÑ ÀÌ»ó... ¿ø·¡ÀÇ ±â´ÉÀ¸·Î µÇµ¹¸± ¼ö ¾ø´Ù.
+		System.out.println("í•© : " + ob2.hap());
+		//--==>> í•© : 310
+		//-- hap() ë©”ì†Œë“œëŠ” ì˜¤ë²„ë¼ì´ë”©(Overriding) ë˜ì–´ ìžˆê³ 
+		//   ob2 ëŠ” ob1 ì„ ì—…ìºìŠ¤íŒ…í•œ ìƒíƒœì˜ ê°ì²´ì´ë¯€ë¡œ
+		//   ã€ŽSuperTest116ã€ ì˜ hap() ë©”ì†Œë“œë¥¼ í˜¸ì¶œí•˜ëŠ” ê²ƒì´ ì•„ë‹ˆë¼
+		//   ã€ŽSubTest116ã€ ì—ì„œ ìž¬ì •ì˜í•œ hap() ë©”ì†Œë“œë¥¼ í˜¸ì¶œí•˜ê²Œ ëœë‹¤.
+		//    ì¦‰, ë©”ì†Œë“œëŠ”
+		//    ì—… ìºìŠ¤íŒ…ì´ ë˜ë”ë¼ë„
+		//    ìž¬ì •ì˜(ë®ì–´ì“°ê¸°)í•œ ì´ìƒ... ì›ëž˜ì˜ ê¸°ëŠ¥ìœ¼ë¡œ ë˜ëŒë¦´ ìˆ˜ ì—†ë‹¤.
 
 		ob2.write();
-		//--==>> ½´ÆÛÅ¬·¡½º write() ¸Þ¼Òµå
+		//--==>> ìŠˆí¼í´ëž˜ìŠ¤ write() ë©”ì†Œë“œ
 
 		//ob2.print();
-		//--==>> ¿¡·¯ ¹ß»ý(ÄÄÆÄÀÏ ¿¡·¯)
+		//--==>> ì—ëŸ¬ ë°œìƒ(ì»´íŒŒì¼ ì—ëŸ¬)
 	
-		// ¡Û ´Ù¿î Ä³½ºÆÃ
+		// â—‹ ë‹¤ìš´ ìºìŠ¤íŒ…
 		((SubTest116)ob2).print();
-		//--==>> ¼­ºêÅ¬·¡½º print() ¸Þ¼Òµå...
+		//--==>> ì„œë¸Œí´ëž˜ìŠ¤ print() ë©”ì†Œë“œ...
 		
-		// ¡Ø Ãß°¡ °üÂû -----------------------------------------------------------------------
-		//    ´Ù¿î Ä³½ºÆÃ °¡´É ¿©ºÎ
+		// â€» ì¶”ê°€ ê´€ì°° -----------------------------------------------------------------------
+		//    ë‹¤ìš´ ìºìŠ¤íŒ… ê°€ëŠ¥ ì—¬ë¶€
 		
-		// »óÀ§ Å¬·¡½º ±â¹Ý ÀÎ½ºÅÏ½º »ý¼º
+		// ìƒìœ„ í´ëž˜ìŠ¤ ê¸°ë°˜ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
 		SuperTest116 ob3 = new SuperTest116();
 		SubTest116 ob4;
 
 		//System.out.println("ob3.c : " + ob3.c);
-		//--==>> ¿¡·¯ ¹ß»ý(ÄÄÆÄÀÏ ¿¡·¯)
-		//-- »óÀ§ °´Ã¼´Â ÇÏÀ§ °´Ã¼ÀÇ ¸â¹ö¿¡ Á¢±ÙÇÏ´Â °ÍÀÌ ºÒ°¡´ÉÇÏ´Ù.
-		//   (»óÀ§ °´Ã¼ ÀÔÀå¿¡¼­´Â ¾î¶² ÇÏÀ§ °´Ã¼°¡ Á¸ÀçÇÏ´ÂÁöµµ ¾Ë ¼ö ¾øÀ½)
+		//--==>> ì—ëŸ¬ ë°œìƒ(ì»´íŒŒì¼ ì—ëŸ¬)
+		//-- ìƒìœ„ ê°ì²´ëŠ” í•˜ìœ„ ê°ì²´ì˜ ë©¤ë²„ì— ì ‘ê·¼í•˜ëŠ” ê²ƒì´ ë¶ˆê°€ëŠ¥í•˜ë‹¤.
+		//   (ìƒìœ„ ê°ì²´ ìž…ìž¥ì—ì„œëŠ” ì–´ë–¤ í•˜ìœ„ ê°ì²´ê°€ ì¡´ìž¬í•˜ëŠ”ì§€ë„ ì•Œ ìˆ˜ ì—†ìŒ)
 
 		//ob4 = ob3;
-		//--==>> ¿¡·¯ ¹ß»ý(ÄÄÆÄÀÏ ¿¡·¯)
-		//-- »óÀ§ °´Ã¼´Â ÇÏÀ§ °´Ã¼¿¡ ´ãÀ» ¼ö(ÂüÁ¶ÇÒ ¼ö) ¾ø´Ù.
+		//--==>> ì—ëŸ¬ ë°œìƒ(ì»´íŒŒì¼ ì—ëŸ¬)
+		//-- ìƒìœ„ ê°ì²´ëŠ” í•˜ìœ„ ê°ì²´ì— ë‹´ì„ ìˆ˜(ì°¸ì¡°í•  ìˆ˜) ì—†ë‹¤.
 
 		//ob4 = (SubTest116)ob3;
-		//--==>> ¿¡·¯ ¹ß»ý(·±Å¸ÀÓ ¿¡·¯)
-		//-- ÀÛ¼ºµÈ ±¸¹®ÀÇ ¹®¹ýÀûÀÎ ±¸Á¶¸¸ ºÃÀ» ¶§ ÀÌ ±¸¹®Àº ´Ù¿î Ä³½ºÆÃÀÌ ÀÌ·ç¾îÁö´Â »óÈ²ÀÌ´Ù.
-		//   ÇÏÁö¸¸, Á¤»óÀûÀÎ Ä³½ºÆÃÀÌ ÀÌ·ç¾îÁöÁö ¾Ê´Â´Ù.
-		//   ÇöÀç SubTest116 °´Ã¼¿¡ ´ëÇÑ ¸Þ¸ð¸® ÇÒ´çÀº ÀÌ·ç¾îÁöÁö ¾ÊÀº »óÅÂÀÌ±â ¶§¹®ÀÌ´Ù.
-		//   ±×·¯¹Ç·Î ´Ù¿î Ä³½ºÆÃÀº ºÒ°¡´ÉÇÏ´Ù.  --> ºÎ¸ðÅ¬·¡½º ÀÎ½ºÅÏ½º »ý¼ºÀ¸·Î ¸Þ¸ð¸®¿¡ ÆÛ¿Ã·ÁÁú ¶§ ÀÚ½ÄÀº Àý´ë ÇÔ²² ¸Þ¸ð¸®¿¡ ÇÔ²² ÆÛ¿Ã·ÁÁú ÀÏÀÌ ¾ø´Ù!!
+		//--==>> ì—ëŸ¬ ë°œìƒ(ëŸ°íƒ€ìž„ ì—ëŸ¬)
+		//-- ìž‘ì„±ëœ êµ¬ë¬¸ì˜ ë¬¸ë²•ì ì¸ êµ¬ì¡°ë§Œ ë´¤ì„ ë•Œ ì´ êµ¬ë¬¸ì€ ë‹¤ìš´ ìºìŠ¤íŒ…ì´ ì´ë£¨ì–´ì§€ëŠ” ìƒí™©ì´ë‹¤.
+		//   í•˜ì§€ë§Œ, ì •ìƒì ì¸ ìºìŠ¤íŒ…ì´ ì´ë£¨ì–´ì§€ì§€ ì•ŠëŠ”ë‹¤.
+		//   í˜„ìž¬ SubTest116 ê°ì²´ì— ëŒ€í•œ ë©”ëª¨ë¦¬ í• ë‹¹ì€ ì´ë£¨ì–´ì§€ì§€ ì•Šì€ ìƒíƒœì´ê¸° ë•Œë¬¸ì´ë‹¤.
+		//   ê·¸ëŸ¬ë¯€ë¡œ ë‹¤ìš´ ìºìŠ¤íŒ…ì€ ë¶ˆê°€ëŠ¥í•˜ë‹¤.  --> ë¶€ëª¨í´ëž˜ìŠ¤ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±ìœ¼ë¡œ ë©”ëª¨ë¦¬ì— í¼ì˜¬ë ¤ì§ˆ ë•Œ ìžì‹ì€ ì ˆëŒ€ í•¨ê»˜ ë©”ëª¨ë¦¬ì— í•¨ê»˜ í¼ì˜¬ë ¤ì§ˆ ì¼ì´ ì—†ë‹¤!!
 
 
 		
