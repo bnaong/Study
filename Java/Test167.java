@@ -1,10 +1,10 @@
-/*================================
- ¡á¡á¡á ÄÃ·º¼Ç(Collection) ¡á¡á¡á
- ================================*/
+/*===============================
+ â– â– â–  ì»¬ë ‰ì…˜(Collection) â– â– â– 
+ ===============================*/
 
- // List -> String[] : List¾È¿¡ List.toArray() ¶ó´Â ¸Ş¼Òµå ÀÖ´Ù.
+ // List -> String[] : Listì•ˆì— List.toArray() ë¼ëŠ” ë©”ì†Œë“œ ìˆë‹¤.
  
- // String[] -> List : Arrays¾È¿¡ Arrays.asList() ¶ó´Â ¸Ş¼Òµå ÀÖ´Ù.
+ // String[] -> List : Arraysì•ˆì— Arrays.asList() ë¼ëŠ” ë©”ì†Œë“œ ìˆë‹¤.
 
 import java.util.List;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class Test167
 		// check~!!!
 		// List -> String[]
 		// mList.toArray(new String[3]);
-		// list ±¸Á¶¸¦ String ¹è¿­·Î º¯È¯½ÃÅ°´Â ±¸¹®
+		// list êµ¬ì¡°ë¥¼ String ë°°ì—´ë¡œ ë³€í™˜ì‹œí‚¤ëŠ” êµ¬ë¬¸
 		String[] strArray = mList.toArray(new String[mList.size()]);
 
 		for (String s : strArray)
@@ -36,9 +36,9 @@ public class Test167
 		// check~!!!
 		// String[] -> List
 		// Array.asList();
-		// String ¹è¿­À» List·Î º¯È¯½ÃÅ°´Â ±¸¹®
+		// String ë°°ì—´ì„ Listë¡œ ë³€í™˜ì‹œí‚¤ëŠ” êµ¬ë¬¸
 		List<String> mNewList = Arrays.asList(strArray);
-		// ¡Ø Array.asList() ÀÇ ¹İÈ¯ ÀÚ·áÇüÀº List
+		// â€» Array.asList() ì˜ ë°˜í™˜ ìë£Œí˜•ì€ List
 		
 		for (String s : mNewList)
 		{
