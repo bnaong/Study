@@ -2,18 +2,18 @@ SELECT USER
 FROM DUAL;
 --==>> SCOTT
 
---¡Û SELF JOIN (ÀÚ±âÁ¶ÀÎ)
+--â—‹ SELF JOIN (ìžê¸°ì¡°ì¸)
 
--- EMP Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ ´ÙÀ½°ú °°ÀÌ Á¶È¸ÇÒ ¼ö ÀÖµµ·Ï Äõ¸®¹®À» ±¸¼ºÇÑ´Ù.
+-- EMP í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ë‹¤ìŒê³¼ ê°™ì´ ì¡°íšŒí•  ìˆ˜ ìžˆë„ë¡ ì¿¼ë¦¬ë¬¸ì„ êµ¬ì„±í•œë‹¤.
 
 /*
 ------------------------------------------------------------------------
-»ç¿ø¹øÈ£   »ç¿ø¸í  Á÷Á¾¸í  °ü¸®ÀÚ¹øÈ£  °ü¸®ÀÚ¸í   °ü¸®ÀÚÁ÷Á¾¸í
+ì‚¬ì›ë²ˆí˜¸   ì‚¬ì›ëª…  ì§ì¢…ëª…  ê´€ë¦¬ìžë²ˆí˜¸  ê´€ë¦¬ìžëª…   ê´€ë¦¬ìžì§ì¢…ëª…
 ------------------------------------------------------------------------
 SMITH      SMITH  CLERK   7902        FORD       ANALYST
 */
 
--- JOIN »ç¿ë¹ý
+-- JOIN ì‚¬ìš©ë²•
 
 --SELECT *
 --FROM TBL_EMP E, TBL_DEPT D
@@ -23,18 +23,9 @@ SMITH      SMITH  CLERK   7902        FORD       ANALYST
 --FROM TBL_EMP E (LEFT, RIGHT, FULL)JOIN TBL_DEPT D
 --ON E.DEPTNO = D.DEPTNO;
 
-SELECT P.EMPNO »ç¿ø¹øÈ£, P.ENAME »ç¿ø¸í, P.JOB Á÷Á¾¸í, P.MGR °ü¸®ÀÚ¹øÈ£, E.ENAME °ü¸®ÀÚ¸í, E.JOB °ü¸®ÀÚÁ÷Á¾¸í
+SELECT P.EMPNO ì‚¬ì›ë²ˆí˜¸, P.ENAME ì‚¬ì›ëª…, P.JOB ì§ì¢…ëª…, P.MGR ê´€ë¦¬ìžë²ˆí˜¸, E.ENAME ê´€ë¦¬ìžëª…, E.JOB ê´€ë¦¬ìžì§ì¢…ëª…
 FROM EMP P LEFT JOIN EMP E
 ON E.EMPNO = P.MGR;
-
-SELECT *
-FROM TBL_BOARD;
-
-
-SELECT *
-FROM TBL_BOARD
-WHERE CONTENTS LIKE('[0-11]%');
-
 
 
 
