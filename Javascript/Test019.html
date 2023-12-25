@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019.html</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;400;500;700&display=swap" rel="stylesheet">
+
+<style type="text/css">
+	*{font-family: 'Noto Serif KR', serif;}
+	input.btn {width: 150px;}
+	.num_input {margin: 20px;}
+	.btn_box {display: flex; margin-bottom: 30px;}
+	.btn:first-child {
+		margin-left: 40px;
+		margin-right: 10px;
+	}
+	.txt {margin-left: 40px; width: 300px;}
+</style>
+
+<script type="text/javascript">
+	
+	function actionBtn()
+	{
+		//alert("함수호출");
+		document.getElementById("result").value="";
+		
+		var num = Number(document.getElementById("num").value);
+		if (num<100)
+		{
+			alert("100 이상의 숫자를 입력하세요!");
+			return;
+		}
+		
+		var sum = 0;
+		var str = "";
+		for (var i = 1; i <= num; i++)
+		{
+			sum += i;
+			if (i % 10 == 0 || i == num)
+			{
+				str += "1 ~ " + i + " : " + sum + "\n";
+			}
+		}
+		
+		
+		document.getElementById("result").value = str;
+
+	}
+	
+
+</script>
+</head>
+<body>
+
+<div class="header">
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!--
+	사용자로부터 임의의 정수 n 을 입력받아
+	1 부터 n 까지의 합을 계산하되
+	n 은 100 이상만 허용하고
+	출력 시 10의 배수가 될 때 마다 중간 합을 출력할 수 있는 페이지를 구성한다.
+	반복문을 활용할 수 있도록 한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	-----------------------------------------------------------------------------
+	
+	정수 입력(100 이상) [    101     ]	→ 조건 유효성(입력값은 100이상만 가능)  num
+	
+	<	결과	>	<	취소	>
+	
+	-------------------------------   → textarea                                result
+	1 ~ 10 : 55
+	1 ~ 20 : 210
+	1 ~ 30 : xxx
+	  :
+	1 ~ 100 : 5050
+	1 ~ 101 : 5051
+	-------------------------------
+-->
+
+<div>
+	<form>
+	
+		<div class="num_input">정수 입력(100 이상) <input type="text" id="num"></div>
+		
+		<div class="btn_box">
+			<input type="button" class="btn" value="결과" onclick="actionBtn()">
+			<input type="reset" class="btn" value="취소">
+		</div>
+		
+		<textarea class="txt" rows="15" cole="100" id="result" readonly="readonly"></textarea>
+	</form>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
