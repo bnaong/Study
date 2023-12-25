@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test033.html</title>
+
+<style type="text/css">
+	a {font-size: small;}
+</style>
+
+<script type="text/javascript">
+
+	function myAddr(addr)
+	{
+		// 확인
+		//alert("함수 호출~!!!");
+		
+		// 확인
+		//alert(addr);
+		
+		
+		// 테스트
+		//document.getElementById("addr1").value = "1234";
+		//window.opener.document.getElementById("addr1").value = "1234";
+		
+		
+		window.opener.document.getElementById("addr1").value = addr;
+		
+		
+		// IE(인터넷 익스플로러) 용
+		//window.opener.document.getElementById("txt1").innerText = addr;
+		
+		// CR(크롬), FF(파이어폭스) 용
+		window.opener.document.getElementById("txt1").innerHTML = addr;
+		
+		// 팝업으로 열린 창 닫아주기
+		window.close();
+	}
+</script>
+
+</head>
+<body>
+
+<div>
+	<form>
+		주소 검색
+		<input>
+		<input type="button" value="검색">
+		<br><br>
+		
+		<!-- <a href="Test032.html">서울 마포구 월드컵북로 1가 (1~110번지)</a><br> -->
+		<!-- <a href="myAddr()">서울 마포구 월드컵북로 1가 (1~110번지)</a><br> -->
+			
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로1가')">서울 마포구 월드컵북로 1가 (1~110번지)</a><br>
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로2가')">서울 마포구 월드컵북로 2가 (111~132번지)</a><br>
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로3가')">서울 마포구 월드컵북로 1가 (133~145번지)</a><br>
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로4가')">서울 마포구 월드컵북로 1가 (146~153번지)</a><br>
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로5가')">서울 마포구 월드컵북로 1가 (154~166번지)</a><br>
+		<a href="javascript:myAddr('04044 서울 마포구 월드컵북로6가')">서울 마포구 월드컵북로 1가 (167~180번지)</a><br>
+		
+	</form>
+</div>
+
+</body>
+</html>
