@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+<style type="text/css">
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	input.btn {font-weight: bold; font-family: 맑은고딕;}
+
+	textarea {font-family: 나눔고딕코딩; font-weight: bold; margin: 2px;}
+	#txtCount {width: 20px; text-align: right;}
+</style>
+
+<script type="text/javascript">
+
+	function addMember()
+	{
+		// 확인
+		//alert("함수 호출 확인~!!!");
+		
+		// ※ prompt() : 대화창을 통해 데이터 입력안내 → 입력 데이터를 받아와 변수에 담아내기
+		
+		// ( 예시 )
+		//prompt("이름 입력 : ");					//-- 무언가를 입력할 수 있는 입력창이 뜸
+		//----------------------
+		//		"홍길동"							//-- 입력 후 확인 눌렀을 때의 상황
+		
+		// var temp = prompt("안내 : ");
+		
+		
+		var str = "";
+		var arr = new Array();
+		var n = 0;
+		
+		do
+		{
+			
+			str = prompt("이름 전화번호(" + (n+1) + ")");
+			
+			// 확인
+			//alert(str);
+			
+			if (str==null || str=="." || str==" " || str=="")
+				break;
+			
+			arr[n] = str;
+			
+			// 확인
+			alert(arr[n]);
+			
+			n++;
+			
+		} while (true);
+		
+		document.getElementById("txtCount").value = arr.length;
+		
+		document.getElementById("txtResult").value = " 이름 	전화번호\n";
+		
+		for (var n = 0; n < arr.length; n++)
+		{
+			document.getElementById("txtResult").value += arr[n] + "\n";	
+		}
+		
+	}
+</script>
+
+</head>
+<body>
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+<!-- 
+	여러 명의 이름과 전화번호를 입력받고
+	그 내용을 전체 출력하는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	
+	※ prompt() 활용.
+	
+	페이지 레이아웃
+	----------------------------------------------
+	
+	< 회원 정보 입력 >
+	
+	전체 회원 수 : [ ] 명
+	---------------------------
+		이름	전화번호
+	---------------------------
+				:
+				:
+				
+	----------------------------------------------
+	
+ -->
+ 
+<div>
+	<form>
+		<br>
+		<input type="button" value="회원 정보 입력" class="btn" onclick="addMember()">
+		<br><br>
+		
+		전체 회원 수 :
+		<input type="text" id="txtCount" class="txt" readonly="readonly"> 명
+		<br>
+		
+		<textarea rows="10" cols="30" id="txtResult" readonly="readonly"></textarea>
+	</form>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
