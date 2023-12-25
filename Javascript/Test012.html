@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test012.html</title>
+
+<script type="text/javascript">
+
+	message = "<h1>Hello~!!!</h1>";
+	
+	document.write(message);
+	
+	alert(message);
+	//-- 실행 결과 javascript가 이 코드를 내부적으로 가장 먼저 처리함을 알 수 있음!
+	
+</script>
+
+
+<script type="text/javascript" src="js/alertTest.js"></script>
+<!-- 만약 script 들끼리 충돌이 있다면, 먼저 script 순서를 바꿔볼 것 -->
+
+
+<script type="text/javascript">
+	
+	// Date 내장 객체 : 현재 시스템의 날짜와 시간
+	// var dt = Date.toString() 와 논리적으로 같은 개념~!!!
+	var dt = String(Date());	//-- 대문자시작이름()은 생성자 함수를 호출하는 것
+	document.write(dt);
+	
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>
