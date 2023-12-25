@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test032.html</title>
+<style type="text/css">
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+	* {font-family: Pretendard; color: #223322; font-weight: bold;}
+	.btn {font-size: 18px;}
+	.btn:hover {color: orange; background-color: #334433;}
+	.btn:active {color: red;}
+	.txt {width: 220px;}
+</style>
+<script type="text/javascript">
+
+	function searchAddr()
+	{
+		// 확인
+		//alert("함수 호출~!!!");
+		
+		// ※ window.open();
+		
+		//	- 형식 및 구조
+		//		var result = window.open(url, name, spec, replace);
+		//		- result
+		//		  새로 생성된 창의 객체 반환
+		//		  창 객체 생성이 정상적으로 이루어지지 않을 경우 null 을 반환함
+		//		- url
+		//		  새 창으로 요청할 주소
+		//		- name
+		//		  새 창의 속성 또는 이름
+		//		  (_blank / _parent / _self / _top / 임의의 이름)
+		//		- spec
+		//		  새 창의 스펙 설정
+		//		- replace
+		//		  히스토리 목록에 새 창을 만들지의 여부 지정 (생략이 가능. 별도로 지정하지 않으면 히스토리 목록에 남는 형태로 지정됨)
+		
+		//	DOM 객체 : 핵심적으로 제어할 수 있어야한다. 
+		//	BOM 객체 : 종종 제어할 때가 있는데, window.open() 이 대표적으로 사용빈도가 높은 객체
+		
+		window.open("Test033.html","Test033", "width=500, height=300");
+		//			-------------	--------   ---------------------
+		//			새로 열릴 창 주소 임의의이름	값들을 설정
+		
+	}
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>주소 검색</h2>
+	
+	<form>
+		기본주소
+		<input type="text" id="addr1" readonly="readonly" class="txt">
+		<input type="button" value="검색" class="btn" onclick="searchAddr()">
+		<br><br>
+		
+		상세주소
+		<input type="text" id="addr2" class="txt">
+		<br><br>
+		
+		<span id="txt1" style="color: red; font-weight: bold;">
+			시각적으로 확인할 수 있도록 처리
+		</span>
+	</form>
+</div>
+
+</body>
+</html>
