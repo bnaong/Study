@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+	function scoreInsert()
+	{
+		//alert("함수 호출");
+		
+		/* 나의 풀이 ====================================================================================
+		var str="";
+		var arr = new Array();
+		
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학("+ (n+1) + ") : ");
+			
+			if (str==null || str=="." || str==" " || str=="")
+				break;
+			
+			arr[n] = str.split(" ");
+			
+			arr[n][4] = Number(arr[n][1]) + Number(arr[n][2]) + Number(arr[n][3]);
+
+			
+			n++;
+			
+		} while (true);
+		
+		
+		for (var i = 0; i < arr.length-1; i++)
+		{
+			for (var j = i+1; j < arr.length; j++)
+			{
+				if (arr[i][4] < arr[i+1][4])
+				{
+					var temp = arr[i];
+					arr[i] = arr[i+1];
+					arr[i+1] = temp;
+				}
+			}
+
+		}
+		
+		document.getElementById("memberCount").value = arr.length;
+		
+		document.getElementById("txtResult").value = " 이름   국어   영어   수학   총점   등수\n";
+		
+		for (var i = 0; i < arr.length; i++)
+		{
+			for (var j = 0; j < 5; j++)
+			{
+				document.getElementById("txtResult").value += arr[i][j] + "    " 	
+			}
+			document.getElementById("txtResult").value += "    " + (i+1) + "\n";
+		}
+		============================================================================================*/
+		
+		// 선생님의 풀이
+		
+		var str = "";
+		
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array())
+		//				     이름들		 국어점수들   영어점수들   수학점수들     총점들       등수들
+		
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학("+ (n+1) + ") : ");
+			
+			if (str==null || str=="." || str==" " || str=="")
+			{
+				break;
+			}
+			
+			var member = str.split(" ");
+			//var member = ["김지민", "90", "80", "70"];
+			
+			arr[0][n] = member[0];
+			arr[1][n] = member[1];
+			arr[2][n] = member[2];
+			arr[3][n] = member[3];
+			arr[4][n] = Number(member[1]) + Number(member[2]) + Number(member[3]);
+			arr[5][n] = 1;
+			
+			n++;
+			
+		} while (true);
+		
+		// 석차(등수) 계산
+		for (var i = 0; i < arr[0].length; i++)				// arr.length 가 아님을 주의!
+		{
+			for (var j = 0; j < arr[0].length; j++)
+			{
+				if (i==j)
+					continue;									// 뒷부분 무시하고 계속
+				
+				if (Number(arr[4][i]) < Number(arr[4][j]))		// 총점 비교	//┐
+				{																//│
+					// i 번째 학생의 등수(arr[5][i]를 1만큼 증가)				//│뒷부분
+					arr[5][i] = (Number(arr[5][i]) + 1).toString();				//│
+				}																//┘
+			}
+
+		}
+		
+		//-- 여기까지 수행하면 arr 배열 구성 끝~!!!
+		
+		var result = "";
+		
+		for (var j = 0; j < arr[0].length; j++)
+		{
+			for (var k = 0; k < arr.length; k++)
+			{
+				// 확인
+				//alert(k + " " + j);
+				result += arr[k][j] + "   ";
+			}
+			result += "\n";
+		}
+		
+		document.getElementById("memberCount").value = arr[0].length;
+		
+		document.getElementById("txtResult").value = " 이름  국어  영어  수학  총점  등수\n";
+		document.getElementById("txtResult").value += result;
+		
+	}
+</script>
+
+</head>
+<body class="section">
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!-- 
+	prompt() 를 활용하여 여러 명의 성적 데이터를 입력받고
+	등수를 부여하여, 리스트를 출력하는 페이지를 구성한다. (2차원 배열 이용)
+	HTML, CSS, Javascript 활용한다.
+	
+	페이지 레이아웃
+	--------------------------------------------------------------
+	
+	< 성적 정보 입력 >				→ prompt()→ 이름 국어 영어 수학(1) : 
+	
+	전체 인원 수 : [	] 명
+	------------------------------------------------- → textarea
+	이름	국어	영어	수학	총점	등수
+	김다슬	 80      70      60     xxx      1등
+	오수경   70      60      50     xxx      2등
+	김경태   60      50      40     xxx      3등
+	박범구   50      40      30     xxx      4등
+	-------------------------------------------------
+	--------------------------------------------------------------
+ -->
+ 
+ <div class="layout">
+ 	<form>
+ 		<div class="btn_box">
+	 		<input type="button" value="성적 정보 입력" class="btn" onclick="scoreInsert()">
+ 		</div>
+ 		
+		<div class="input_box"  style="max-width:440px"><span>전체 인원 수 :</span><input type="text" id="memberCount" readonly="readonly">명</div>
+		
+		<div class="result_box">
+			<textarea rows="30" cols="60" id="txtResult" readonly="readonly"></textarea>
+		</div>
+ 	</form>
+ </div>
+
+</body>
+</html>
