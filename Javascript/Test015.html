@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+<style type="text/css">
+	*
+	{
+		color: #343;
+		font-family: 맑은 고딕;
+	}
+	input.box:focus
+	{
+		background-color: yellow;
+	}
+	input.btn:hover
+	{
+		color: orange;
+		font-weight: bold;
+	}
+	input.numberBox
+	{
+		width: 50px;
+		text-align: right;	
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	function actionBtnA()
+	{
+		// 테스트
+		//alert("A버튼 클릭 확인~!!!");
+		
+		//alert(document.getElementbyId("txtLeft"));			-- 객체
+		//alert(document.getElementbyId("txtLeft").value);		-- 텍스트 박스 안에 들어있는 value(값)
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		// 테스트
+		//alert(txt01);
+		//alert(txt01.value);
+		
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr;
+		
+		
+	}
+	function actionBtnB()
+	{
+		// 테스트
+		//alert("B버튼 클릭 확인~!!!")
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		var rightStr = txt02.value;
+		
+		txt01.value = rightStr;
+	}
+	function actionBtnResult()
+	{
+		// 테스트
+		//alert("함수 호출 확인~!!!");
+		
+		var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		
+		// 확인
+		// alert(num1);
+		// alert(num2);
+		
+		//var result = num1 + num2 						//-- 문자열 결합이 일어남
+		
+		//var result = parseInt(num1) + parseInt(num2);	//-- 방법 ①
+		
+		var result = Number(num1) + Number(num2);		//-- 방법 ② Number 객체의 생성자. ()안의 매개변수를 Number 형태로 변환해줌
+		
+		document.getElementById("txtResult").value = result;
+		
+	}
+	
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 기본 관찰</h1>
+	<hr>
+</div>
+
+<div>
+	<input type="text" class="box" id="txtLeft">
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB()">
+	<input type="text" class="box" id="txtRight">
+	
+	<br><br><br>
+	<hr>
+	
+	<input type="text" class="numberBox" id="txtNumber01">
+	+
+	<input type="text" class="numberBox" id="txtNumber02">
+	
+	<input type="button" value=" = " class="btn" id="btnResult" onclick="actionBtnResult()">
+	
+	<input type="text" class="numberBox" id="txtResult" disabled="disabled">
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
