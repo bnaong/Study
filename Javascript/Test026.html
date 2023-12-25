@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+<link rel="style/css">
+<style type="text/css">
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+	* {font-family: Pretendard;}
+	.header {
+		text-align: center;
+		max-width: 495px; 
+	}
+	.result_box 
+	{
+		width: 400px;
+	    padding: 8px;
+	    border-radius: 7px;
+	    margin: 8px;
+	
+	}
+	.btn
+	{
+		margin-left: 30px;
+	    border-radius: 5px;
+	    background-color: pink;
+	}
+	.input_box
+	{width: 15px;
+    border-radius: 6px;
+    margin-left: 20px;
+    background-color: #ff1489;
+    color: white;}
+    .section
+    {
+    	background-color: #ffe7ef;
+    	padding: 15px;
+    	max-width: 465px;
+    	border-radius: 18px;
+    }
+    .user_box {margin-left: 10px;}
+</style>
+<script type="text/javascript">
+
+	function actionPlay()
+	{
+		var user = parseInt(document.getElementById("user").value);
+		
+		//alert(user);
+		
+		// ※ Math.random();		-- 0.0 ~ 1.0 사이의 실수 형태의 난수 발생
+		
+		var com = Math.floor(Math.random() * 3 + 1);
+		
+		//alert(com);
+		
+		
+		var message = "무승부 상황입니다~!!!";
+
+		if ((user==1 && com==3) || (user ==2 && com==1) || (user==3 && com==2))
+		{
+			message = "당신이 승리했습니다~!!!";
+		}
+
+		else if ((user==1 && com==2) || (user ==2 && com==3) || (user==3 && com==1))
+		{
+			message = "컴퓨터가 승리했습니다~!!!";
+		}
+		
+		
+		switch (user)
+		{
+		case 1: user = "가위";
+			break;
+		case 2: user= "바위";
+			break;
+		case 3: user= "보";
+			break;
+		}
+		
+		switch (com)
+		{
+		case 1: com = "가위";
+			break;
+		case 2: com = "바위";
+			break;
+		case 3: com = "보";
+			break;
+		}	
+		
+		document.getElementById("result").value = "사용자 : " + user + " 컴퓨터 : " + com + " → " + message;
+		
+		/*=== 선생님 풀이
+		message += "사용자" + strArr[u-1] + "컴퓨터 : " + strArr[c-1];
+		
+		if ((user==1 && com==3) || (user ==2 && com==1) || (user==3 && com==2))
+		{
+			message += "당신이 승리했습니다~!!!";
+		}
+
+		else if ((user==1 && com==2) || (user ==2 && com==3) || (user==3 && com==1))
+		{
+			message += "컴퓨터가 승리했습니다~!!!";
+		}
+		*/
+		
+		/*=== 선생님 풀이
+		if (u==c)
+			message += "비겼습니다."
+		else if (u%3 == (c+2)%3)
+			message += "컴퓨터가 이겼습니다."
+		else
+			message += "당신이 이겼습니다."
+		*/
+	}
+</script>
+
+</head>
+<body>
+
+<div class="header">
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!-- 
+	가위, 바위, 보 게임을 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	자바스크립트 난수 발생 함수를 찾아 활용한다.
+	
+	→ http://w3schools.com/
+	→ http://koxo.com/
+	
+	페이지 레이아웃
+	----------------------------------------------------------------
+	
+	입력(1.가위, 2.바위, 3.보)			[ 2  ]  < 게임 결과 확인 >
+	
+	[ 사용자 : 바위 컴퓨터 : 보 → 컴퓨터가 이겼습니다.	]
+	
+	----------------------------------------------------------------
+ -->
+
+<div class="section">
+	<form>
+		<div class="user_box">
+			<span>입력(1.가위, 2.바위, 3.보)</span><input type="text" id ="user" class="input_box"><input type="button" class="btn" value="게임 결과 확인" onclick="actionPlay()">
+		</div>
+		<div><input type="text" id="result" class="result_box" disabled="disabled"></div>
+	</form>
+</div>
+
+
+</body>
+</html>
