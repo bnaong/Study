@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test013.html</title>
+
+<script type="text/javascript">
+
+	/* 이벤트 등록 방법 ② */
+	/* document.onload = 행위, 동작, 기능; */
+	document.onload = windowOnload();
+	//-- 
+	
+	function windowOnload()
+	{
+		alert("경고창~!!!");
+		
+	}
+
+</script>
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body onload="windowOnload()"> -->
+<body>
+
+<h1>하하</h1>
+<h2>배부르다~!!!</h2>
+<h2>짜게 먹었네~!!!</h2>
+<!-- 페이지를 요청하는 행위가 일어나면 내부적으로 load 이벤트가 발생함. onload: 이벤트 핸들러 -->
+
+</body>
+</html>
