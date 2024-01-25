@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send01.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+span {
+	display: inline-block;
+	width: 100px;
+}
+</style>
+</head>
+<body>
+
+<!-- 
+	○ 데이터 송수신 실습 01
+	   - 이름과 전화번호를 입력받는 html 페이지를 작성한다.
+	   
+	     이름		[  textbox	]
+	     전화번호	[  textbox  ]
+	     
+	     < 회원가입 >
+	     
+	   - 회원가입 버튼 클릭 시
+	     『김수환님』 회원 가입이 완료되었습니다.
+	     회원님께서 등록하신 전화번호는 010-1111-1111 입니다.
+	     라는 내용을 출력하는 JSP 페이지(Receive01.jsp)를 구성하여
+	     데이터를 전달할 수 있도록 한다.
+	     
+	   - 사용자의 최초 요청 주소는
+	     http://localhost:3306/WebApp07/Send01.html 로 한다.
+	     → 최초 요청하는 페이지가 변하지 않고 정적이라면 html 로 구성하면 되겠지만,
+	        최초 요청하는 페이지가 다른 페이지를 가져와서 만나거나, 현재 상황을 파악할 필요가 있는 페이지라면
+	        (ex. 요일별, 계절별, 시즌별, 사용자별로 사용자에게 보여지는 페이지가 달라져야 할 때) html로 렌더링 할 수 없을 것!
+	     
+	○ Send01.html
+	   Receive01.jsp
+
+ -->
+ 
+ <!-- 
+ 	1. 클라이언트 측에서 서버 측에 데이터 전송 및 페이지 요청을 위해
+ 	   form 태그 필요.
+ 	2. form 태그 영역 안에 들어가야 하는 대상은
+ 	   이름과 전화번호와 submit
+ 	3. form 태그의 action 속성은 데이터를 전송하여 요청하는
+ 	   jsp 페이지의 주소 지정 → Receive01.jsp
+ 	4. form 태그의 method 속성은 데이터 전송 및 페이지 요청 방식
+ 	   → get 또는 post
+  -->
+
+<div>
+	<form action="Receive01.jsp" method="post">
+		<!-- 5. id, name 속성은 어떤 영역에서 어떤 선택자를 활용하느냐에 따라
+		        적절히 판단하여 부여할 수 있도록 한다.
+		     6. name 속성은 JSP 에서 주로 사용하게 될 식별자. -->
+		<span>이름</span><input type="text" name="name" class="txt"><br>
+		<span>전화번호</span><!-- <input type="text" name="phonenumber" class="txt"> --><input type="tel" name="phonenumber" class="txt">
+		<br><br>
+		<!-- ※ input type을 tel로 지정하면 type이 tel인 것을 control 가능해짐! -->
+		
+		<!-- 7. submit 을 통해 전송기능을 수행할 수 있다.
+		        button 은 이미지 또는 다른 태그들을 포함할 수 있으며
+		        input 은 스타일 구성을 폭넓게 할 수 있다. -->
+		
+		<input type="submit" value="회원가입" class="btn" style="width: 150px;">
+		<input type="reset" value="취소" class="btn" style="width: 150px;">
+	</form>
+</div>
+
+</body>
+</html>
